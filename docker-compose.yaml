@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - "8080:80"  # Если нужно изменить порт, замените "8080" на нужный
+    depends_on:
+      - front
+
+  front:
+    build:
+      context: .
+      dockerfile: docker/front/Dockerfile
+    ports:
+      - "3000:3000"  # Если нужно изменить порт, замените "3000" на нужный
